@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/decks",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Browse and manage decks/cards"
+            }
+          }
+        ],
+        "send": {
+          "text": "/decks"
+        }
+      }
+    ]
+  }
+]

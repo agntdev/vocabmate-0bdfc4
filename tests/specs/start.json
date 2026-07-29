@@ -1,16 +1,1 @@
-[
-  {
-    "name": "/start replies with the welcome + main menu",
-    "steps": [
-      {
-        "send": { "text": "/start" },
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": { "text": "👋 Welcome! Tap a button below to get started." }
-          }
-        ]
-      }
-    ]
-  }
-]
+[{"name":"/start begins onboarding","steps":[{"send":{"text":"/start"},"expect":[{"method":"sendMessage","payload":{"text":"Welcome to VocabSprint. Build a steady vocabulary habit, one review at a time.\n\nStart with a deck, then add your first card."}}]},{"send":{"callback":"start:starters"},"expect":[{"method":"editMessageText","payload":{"text":"Your starter decks are ready. Choose an action to begin."}}]}]}]

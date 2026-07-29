@@ -1,17 +1,9 @@
 import { Composer } from "grammy";
-
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "Review due cards", data: "review:resume" }) if the toolkit exposes it.
-
-const composer = new Composer();
-
-composer.callbackQuery("review:resume", async (ctx) => {
-  await ctx.answerCallbackQuery();
-  await ctx.reply("Quick action button in notifications to resume interrupted sessions");
+import type { Ctx } from "../bot.js";
+// The review handler owns the shared review:resume callback. This composer keeps
+// notification response tracking separate without competing for that callback.
+const composer = new Composer<Ctx>();
+composer.callbackQuery("reminder:seen", async (ctx) => {
+  await ctx.answerCallbackQuery({ text: "Reminder noted" });
 });
-
 export default composer;
